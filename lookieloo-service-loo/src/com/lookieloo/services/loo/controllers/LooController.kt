@@ -20,6 +20,11 @@ class LooController(kodein: Kodein) : KodeinController(kodein) {
 	private val looRepository: LooRepository by instance()
 
 	override fun Routing.registerRoutes() {
+		get("/test") {
+			logger.info("This is a test endpoint!")
+			call.respond("Test Success!")
+		}
+
 		get("/loo/{id}") {
 			logger.info("Calling a loo!")
 			val looId = call.parameters["id"]
