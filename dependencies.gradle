@@ -1,0 +1,47 @@
+ext {
+	versions = [
+			ktor   : '1.2.4',
+			kodein : '5.2.0',
+			kotlin : '1.3.61',
+			kmongo : '3.12.0',
+			logback: '1.2.1',
+			logstash: '5.1',
+			shadow : '2.0.1'
+	]
+
+	shared = [
+			jetbrains: [
+					kotlin      : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+					kotlinstdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+			],
+			kodein   : [
+					generic: "org.kodein.di:kodein-di-generic-jvm:${versions.kodein}"
+			],
+			ktor     : [
+					auth            : "io.ktor:ktor-auth:${versions.ktor}",
+					authJwt         : "io.ktor:ktor-auth-jwt:${versions.ktor}",
+					metrics         : "io.ktor:ktor-metrics:${versions.ktor}",
+					jackson         : "io.ktor:ktor-jackson:${versions.ktor}",
+					serverCore      : "io.ktor:ktor-server-core:${versions.ktor}",
+					serverHostCommon: "io.ktor:ktor-server-host-common:${versions.ktor}",
+					serverNetty     : "io.ktor:ktor-server-netty:${versions.ktor}",
+					serverTests     : "io.ktor:ktor-server-tests:${versions.ktor}"
+			],
+			kmongo   : [
+					kmongo : "org.litote.kmongo:kmongo:${versions.kmongo}",
+					kmongoAsync : "org.litote.kmongo:kmongo-async:${versions.kmongo}",
+					kmongoCoroutine : "org.litote.kmongo:kmongo-coroutine:${versions.kmongo}",
+					kmongoId : "org.litote.kmongo:kmongo-id:${versions.kmongo}",
+					kmongoIdJackson : "org.litote.kmongo:kmongo-id-jackson:${versions.kmongo}"
+			],
+			jengelman: [
+					shadow: "com.github.jengelman.gradle.plugins:shadow:${versions.shadow}"
+			],
+			logback  : [
+					classic: "ch.qos.logback:logback-classic:${versions.logback}"
+			],
+			logstash: [
+					logstashLogbackEncoder : "net.logstash.logback:logstash-logback-encoder:${versions.logstash}"
+			]
+	]
+}

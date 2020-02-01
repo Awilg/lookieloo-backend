@@ -1,0 +1,4 @@
+rootProject.name = "lookieloo"
+
+include ":lookieloo-core"
+include ":lookieloo-service-loo"
