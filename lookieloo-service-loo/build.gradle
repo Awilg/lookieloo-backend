@@ -14,6 +14,7 @@ sourceSets {
 dependencies {
 	implementation shared.jetbrains.kotlin
 	implementation shared.jetbrains.kotlinstdlib
+	implementation shared.kodein.generic
 	implementation shared.ktor.serverNetty
 	implementation shared.ktor.metrics
 	implementation shared.ktor.serverCore
@@ -21,6 +22,13 @@ dependencies {
 	implementation shared.ktor.authJwt
 	implementation shared.ktor.jackson
 	implementation shared.logback.classic
+	implementation shared.kmongo.kmongo
+	implementation shared.kmongo.kmongoAsync
+	implementation shared.kmongo.kmongoCoroutine
+	implementation shared.kmongo.kmongoId
+	implementation shared.kmongo.kmongoIdJackson
+
+	implementation project(':lookieloo-core')
 
 	testImplementation shared.ktor.serverTests
 }

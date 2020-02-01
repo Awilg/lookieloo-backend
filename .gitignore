@@ -5,3 +5,5 @@
 *.iml
 *.ipr
 *.iws
+lookieloo-core/build/
+lookieloo-service-loo/build/
