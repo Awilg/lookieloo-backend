@@ -5,6 +5,7 @@ import com.lookieloo.services.core.logging.logger
 import com.lookieloo.services.loo.data.LooRepository
 import com.lookieloo.services.loo.models.request.LooByLocRequest
 import com.lookieloo.services.loo.models.request.LooCreate
+import com.lookieloo.services.loo.models.request.toLoo
 import com.lookieloo.services.loo.models.response.toInfo
 import io.ktor.application.call
 import io.ktor.request.receive
@@ -35,8 +36,9 @@ class LooController(kodein: Kodein) : KodeinController(kodein) {
 
 		post("/loo") {
 			val toCreate = call.receive<LooCreate>()
-			//looRepository.save(Loo())
-			//call.respond(newLoo.toInfo())
+			val loo = toCreate.toLoo()
+			looRepository.save(loo)
+			call.respond(loo.toInfo())
 		}
 
 		post("/loo/findNearby") {
