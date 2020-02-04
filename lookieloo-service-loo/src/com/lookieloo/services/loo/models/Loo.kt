@@ -7,5 +7,6 @@ import org.litote.kmongo.newId
 data class Loo(
 	@BsonId val id: Id<Loo> = newId(),
 	val description: String,
-	val location: Location?
+	val location: Location?,
+	val attributes: Set<String>
 )

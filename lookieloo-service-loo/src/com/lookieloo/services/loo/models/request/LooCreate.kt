@@ -18,7 +18,8 @@ fun LooCreate.toLoo(): Loo {
 				this@toLoo.location.longitude,
 				this@toLoo.location.latitude
 			)
-		)
+		),
+		attributes = this@toLoo.attributes
 	)
 }
 

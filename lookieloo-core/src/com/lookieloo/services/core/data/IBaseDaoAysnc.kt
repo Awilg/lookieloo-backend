@@ -9,4 +9,5 @@ interface IBaseDaoAsync<T : Any> {
     suspend fun get(id: Id<T>) : T?
     suspend fun save(obj : T) : Any?
     suspend fun delete(id: Id<T>) : Boolean
+    suspend fun delete(id: String) : Boolean
 }

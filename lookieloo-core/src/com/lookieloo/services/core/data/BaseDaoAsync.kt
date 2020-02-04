@@ -29,4 +29,8 @@ open class BaseDaoAsync<T : Any>(private val collection: CoroutineCollection<T>)
 		return collection.deleteOneById(id).wasAcknowledged()
 	}
 
+	override suspend fun delete(id: String): Boolean {
+		return collection.deleteOneById(ObjectId(id)).wasAcknowledged()
+	}
+
 }

@@ -11,6 +11,7 @@ import io.ktor.application.call
 import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.Routing
+import io.ktor.routing.delete
 import io.ktor.routing.get
 import io.ktor.routing.post
 import org.kodein.di.Kodein
@@ -32,6 +33,14 @@ class LooController(kodein: Kodein) : KodeinController(kodein) {
 
 			val loo = looId?.let { id -> looRepository.get(id) }
 			loo?.let { a -> call.respond(a.toInfo()) }
+		}
+
+		delete("/loo/{id}") {
+			logger.info("Deleting a loo!")
+			val looId = call.parameters["id"]
+
+			val loo = looId?.let { id -> looRepository.delete(id) }
+			call.respond("Deleted!")
 		}
 
 		post("/loo") {
