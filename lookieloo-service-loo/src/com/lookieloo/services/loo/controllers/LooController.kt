@@ -19,7 +19,7 @@ import org.kodein.di.generic.instance
 
 
 class LooController(kodein: Kodein) : KodeinController(kodein) {
-	private val looRepository: LooRepository by instance()
+	private val looRepository: LooRepository by instance<LooRepository>()
 
 	override fun Routing.registerRoutes() {
 		get("/test") {
