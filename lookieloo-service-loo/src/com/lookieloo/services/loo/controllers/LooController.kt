@@ -58,7 +58,8 @@ class LooController(kodein: Kodein) : KodeinController(kodein) {
 				request.longitude,
 				request.minDistance,
 				request.maxDistance
-			)
+			).map { loo -> loo.toInfo() }
+
 			call.respond(results)
 		}
 	}

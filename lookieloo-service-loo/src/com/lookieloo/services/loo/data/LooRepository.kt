@@ -8,6 +8,7 @@ import org.litote.kmongo.coroutine.CoroutineCollection
 class LooRepository(private val collection: CoroutineCollection<Loo>) : BaseDaoAsync<Loo>(collection) {
 
 	//47.6062° N, 122.3321° W
+	// the distances are in meters btw
 	suspend fun findByLocation(latitude : Double, longitude: Double, minDistance : Double, maxDistance : Double): List<Loo> {
 
 		val results = collection.find(
