@@ -52,12 +52,14 @@ class LooController(kodein: Kodein) : KodeinController(kodein) {
 
 		post("/loo/findNearby") {
 			val request = call.receive<LooByLocRequest>()
+			val filterParams: List<String>? = call.request.queryParameters.getAll("filter")
 
 			val results = looRepository.findByLocation(
 				request.latitude,
 				request.longitude,
 				request.minDistance,
-				request.maxDistance
+				request.maxDistance,
+				filterParams
 			).map { loo -> loo.toInfo() }
 
 			call.respond(results)
