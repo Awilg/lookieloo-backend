@@ -5,6 +5,7 @@ import com.lookieloo.services.loo.models.Location
 import com.lookieloo.services.loo.models.Loo
 
 data class LooCreate(
+	val title: String,
 	val description: String,
 	val location: LatLng,
 	val attributes: Set<String>
@@ -13,6 +14,7 @@ data class LooCreate(
 fun LooCreate.toLoo(): Loo {
 	return Loo(
 		description = this@toLoo.description,
+		title = this@toLoo.title,
 		location = Location(
 			coordinates = doubleArrayOf(
 				this@toLoo.location.longitude,

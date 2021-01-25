@@ -43,8 +43,9 @@ fun Application.main() {
 		}
 	}
 
+	// TODO - move this to some config
 	val client = KMongo.createClient("mongodb://localhost:27017").coroutine
-	val database = client.getDatabase("Lookieloo-Loo")
+	val database = client.getDatabase("lookieloo")
 	val looCollection = database.getCollection<Loo>()
 
 	kodeinApplication {
