@@ -1,1 +1,1 @@
-# lookieloo-backend
+# lookieloo
