@@ -13,7 +13,7 @@ USER $APPLICATION_USER
 COPY . /appbuild
 WORKDIR /appbuild
 RUN ls -lha
-RUN ./gradlew clean build --debug
+RUN ./gradlew clean build
 # End Building phase --------
 
 COPY --from=build /appbuild/lookieloo-service-loo/build/libs/my-application.jar /app/lookieloo-service-loo/lookieloo-service-loo.jar
