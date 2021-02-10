@@ -7,7 +7,7 @@ RUN mkdir /app
 RUN chown -R $APPLICATION_USER /app
 RUN mkdir /appbuild
 RUN chown -R $APPLICATION_USER /appbuild
-USER $APPLICATION_USER
+USER root
 
 # App Building phase --------
 COPY . /appbuild
