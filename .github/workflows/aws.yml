@@ -85,5 +85,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ecs-devops-sandbox-service
-        cluster: default
+        cluster: ecs-devops-sandbox-cluster
         wait-for-service-stability: true
