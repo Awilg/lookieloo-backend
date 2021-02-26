@@ -76,7 +76,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ecs-devops-sandbox-cdk/task-definition.json
+        task-definition: lookieloo-cdk/task-definition.json
         container-name: lookieloo-container
         image: ${{ steps.build-image.outputs.image }}
 
@@ -84,6 +84,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ecs-devops-sandbox-service
-        cluster: ecs-devops-sandbox-cluster
+        service: lookieloo-service
+        cluster: lookieloo-cluster
         wait-for-service-stability: true
