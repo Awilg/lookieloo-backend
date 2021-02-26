@@ -1,7 +1,7 @@
 """AWS CDK module to create ECS infrastructure"""
 from aws_cdk import (core, aws_ecs as ecs, aws_ecr as ecr, aws_ec2 as ec2, aws_iam as iam, aws_ecs_patterns as ecs_patterns)
 
-class EcsDevopsSandboxCdkStack(core.Stack):
+class LookieLooCdkStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -13,18 +13,18 @@ class EcsDevopsSandboxCdkStack(core.Stack):
 
         # Create the ECS Cluster (and VPC)
         vpc = ec2.Vpc(self,
-                      "ecs-devops-sandbox-vpc",
+                      "lookieloo-vpc",
                       max_azs=3)
         cluster = ecs.Cluster(self,
-                              "ecs-devops-sandbox-cluster",
-                              cluster_name="ecs-devops-sandbox-cluster",
+                              "lookieloo-cluster",
+                              cluster_name="lookieloo-cluster",
                               vpc=vpc)
 
         # Create the ECS Task Definition with placeholder container (and named Task Execution IAM Role)
         execution_role = iam.Role(self,
-                                  "ecs-devops-sandbox-execution-role",
+                                  "lookieloo-execution-role",
                                   assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
-                                  role_name="ecs-devops-sandbox-execution-role")
+                                  role_name="lookieloo-execution-role")
         execution_role.add_to_policy(iam.PolicyStatement(
             effect=iam.Effect.ALLOW,
             resources=["*"],
@@ -38,11 +38,11 @@ class EcsDevopsSandboxCdkStack(core.Stack):
                 ]
         ))
         task_definition = ecs.FargateTaskDefinition(self,
-                                                    "ecs-devops-sandbox-task-definition",
+                                                    "lookieloo-task-definition",
                                                     execution_role=execution_role,
-                                                    family="ecs-devops-sandbox-task-definition")
+                                                    family="lookieloo-task-definition")
         container = task_definition.add_container(
-            "ecs-devops-sandbox",
+            "lookieloo-container",
             image=ecs.ContainerImage.from_registry("amazon/amazon-ecs-sample")
         )
 
@@ -55,10 +55,10 @@ class EcsDevopsSandboxCdkStack(core.Stack):
 
         # Create the ECS Service
         fargate_service = ecs_patterns.ApplicationLoadBalancedFargateService(self,
-                                     "ecs-devops-sandbox-service",
+                                     "lookieloo-service",
                                      cluster=cluster,
                                      task_definition=task_definition,
-                                     service_name="ecs-devops-sandbox-service")
+                                     service_name="lookieloo-service")
 
         fargate_service.service.connections.security_groups[0].add_ingress_rule(
             peer = ec2.Peer.ipv4(vpc.vpc_cidr_block),

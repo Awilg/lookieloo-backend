@@ -6,7 +6,7 @@ with open("README.md") as fp:
 
 
 setuptools.setup(
-    name="ecs_devops_sandbox_cdk",
+    name="lookieloo_cdk",
     version="0.0.1",
 
     description="An empty CDK Python app",
@@ -15,8 +15,8 @@ setuptools.setup(
 
     author="author",
 
-    package_dir={"": "ecs_devops_sandbox_cdk"},
-    packages=setuptools.find_packages(where="ecs_devops_sandbox_cdk"),
+    package_dir={"": "lookieloo_cdk"},
+    packages=setuptools.find_packages(where="lookieloo_cdk"),
 
     install_requires=[
         "aws-cdk.core==1.90.1",
