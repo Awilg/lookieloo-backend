@@ -76,7 +76,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ecs_devops_sandbox_cdk/task-definition.json
+        task-definition: ecs-devops-sandbox-cdk/task-definition.json
         container-name: lookieloo-container
         image: ${{ steps.build-image.outputs.image }}
 
