@@ -30,7 +30,7 @@ class LooController(kodein: Kodein) : KodeinController(kodein) {
 	}
 
 	private fun Routing.healthCheck() {
-		get("/test") {
+		get("/") {
 			call.respond("Test Success!")
 		}
 	}
